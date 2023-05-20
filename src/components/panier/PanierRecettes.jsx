@@ -3,6 +3,7 @@ import "./panierRecette.css"
 import { useForm } from "react-hook-form";
 import  { useState,useEffect} from 'react'
 import { totalArticlesPrix } from '../totalArticlesPrix'
+import Formulaire from '../formulaire/Formulaire';
 
 
 function PanierRecettes() {
@@ -109,6 +110,10 @@ function PanierRecettes() {
             }
            
          </div>
+         <div className='parent-valider'>
+            <button className='valider'>Valider</button>
+         </div>
+         <Formulaire/>
            
     </div>
     
