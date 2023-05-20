@@ -1,0 +1,39 @@
+section{
+    width: 100%;
+    height: 400px;
+}
+.section-img{
+    padding-top: 100px;
+    width: 100%;
+    position: relative;
+    height: 100%;
+    display: flex;
+}
+.section-img img{
+    width: 50%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 100%;
+}
+.section-about{
+    width: 50%;
+    background: url(../../images/restaurant3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center; 
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;  
+}
+.section-about h2{
+    color: white;
+    font-size: 30px;
+}
+.section-about p{
+    color: #f5b70a;
+    font-size: 27px;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 30px;
+
+}
+

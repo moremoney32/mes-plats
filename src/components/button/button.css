@@ -1,0 +1,116 @@
+.button-menu{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #141124;
+    color:orange;
+    cursor: pointer;
+    position: absolute;
+    bottom: 100px;
+    right: 20%;
+}
+.pattes{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+
+}
+.riz{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+
+}
+.avocat{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 85px;
+    
+}
+.pizza{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+    
+}
+.poulet{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 75px;
+    
+}
+.biere{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+
+}
+.vin{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+
+}
+.jus{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+
+}
+.whisky{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+
+}
+.pinacollada{
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    background:red;
+    color: white;
+    cursor: pointer;
+
+}

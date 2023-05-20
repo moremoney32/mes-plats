@@ -1,0 +1,28 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-top: 50px;
+}
+.main h2{
+    color: orange;
+    font-size: 30px;
+}
+.trie-plats{
+    display: flex;
+    justify-content: space-between;
+
+}
+.trie-sous-plats{
+    display: flex;
+    margin: auto;
+    gap: 310px;
+    padding-top: 40px;
+
+}
+.trie-sous-plats-button{
+    display: flex;
+   justify-content: space-between;
+    padding-top: 40px;
+
+}

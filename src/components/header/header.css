@@ -1,0 +1,88 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.h2-ri-restaurant{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+
+}
+.h2-ri-restaurant i{
+    color: white;
+    font-size: 25px;
+}
+.h2-ri-restaurant h2{
+    color: orange;
+    font-size: 33px;
+    font-weight: 600;
+    
+}
+.nav-header ul{
+    display: flex;
+    gap: 25px;
+    color: white;
+}
+.nav-link-home{
+    text-decoration: none;
+    color: white;
+
+}
+.nav-header ul li{
+    list-style-type: none;
+    font-size: 20px;
+    transform: translate3d(0,5px,0);
+    transition: 0.3s;
+}
+
+.nav-link-actu{
+    color: orange;
+    text-decoration: none;
+
+}
+.input-search{
+   
+    position: relative;
+}
+.input-search input{
+    border-radius: 15px;
+    padding: 10px;
+    background:#141124;
+    transform: translate3d(0,5px,0);
+    border: none;
+    outline: none;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: white;
+}
+.input-search input ::placeholder{
+    color: gray;
+}
+.input-search i{
+    position: absolute;
+    right: 20px;
+    top: 13px;
+    font-size: 15px;
+    color: white;
+}
+.parent-ri-shopping{
+    width: 15px;
+    height: 15px;
+    background: orange;
+    text-align: center;
+    padding: 12px;
+    border-radius: 5px;
+    color: white;
+    position: relative;
+    transform: translate3d(0,5px,0);
+}
+.parent-ri-shopping::before {
+    content: "2";
+    color:black;
+    font-size: 14px;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    font-weight: 500;
+  }

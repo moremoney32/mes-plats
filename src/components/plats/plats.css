@@ -1,0 +1,161 @@
+.special-plats{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #141124;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 250px;
+    padding-top: 20px;
+    border-radius: 10px;
+    padding-bottom: 35px;
+    border:none;
+    transition:transform ease 0.4s, box-shadow ease 0.4s;
+    text-align: center;
+    cursor: pointer;
+}
+.special-plats:hover{
+    
+    border:none;
+    outline:none;
+    transform:translate3d(0,-10px ,0);
+    box-shadow: 5px 5px 10px -5px #f5b70a;
+}
+.special-plats img{
+    width: 100%;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: auto;
+}
+.all-i{
+    transform: translate3d(75px,5px,0);
+    width: 15px;
+    height: 15px;
+    color: #f76e11;
+}
+.special-plats div p{
+    color: #f5b70a;
+    transform: translate3d(0,10px,0);
+   margin: auto;
+    font-size: 22px;
+}
+.tiltle-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translate3d(0,25px,0);
+}
+.tiltle-price  div{
+    width: 15px;
+    height: 15px;
+    background: #f5b70a;
+    text-align: center;
+    padding: 12px;
+    border-radius: 5px;
+    color: white;
+}
+.price{
+    color: white;
+    font-size: 22px;
+}
+.euro{
+    color:#f5b70a;
+    
+}
+.select-menu{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 300px;
+}
+.all-button{
+    position: absolute;
+    left: 35%;
+    top: 30%;
+    width: 400px;   
+}
+.select-menu-accompagnements h2{
+    color: orange;
+    font-size: 30px;
+    margin: auto !important;
+}
+.select-menu-accompagnements{    
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+   
+}
+.select-menu-accompagnements-all-button{
+   margin: auto;
+    width: 400px;
+    padding-top: 30px; 
+
+}
+.select-menu-accompagnements-trie-sous-plats-button{
+    display: flex;
+    padding-left: 120px;
+    padding-top: 50px;
+    gap: 50px;
+ 
+}
+.select-menu-accompagnements-trier{
+    display: flex;
+    gap: 100px;
+    flex-wrap: wrap;
+    padding-top: 100px;
+}
+.select-menu-accompagnements .special-plats{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #141124;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 250px;
+    padding-top: 20px;
+    border-radius: 10px;
+    padding-bottom: 35px;
+    border:none;
+    transition:transform ease 0.4s, box-shadow ease 0.4s;
+    text-align: center;
+    cursor: pointer;
+
+}
+.errorPlats{
+    font-size: 40px;
+    color:white;
+    position: absolute;
+    left: 35%;
+    top: 60%;
+}
+.errorbiere{
+    font-size: 40px;
+    color:orange;
+    position: absolute;
+    left: 30%;
+    display: none;
+
+}
+.parentPanier{
+    background:black ;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+.panier{
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: center;
+    background:orange;
+    font-size: 30px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    color: red;
+    cursor: pointer;
+    
+}
+

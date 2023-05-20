@@ -1,0 +1,81 @@
+
+.commande{
+    background: black;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.commande h2{
+    color: orange;
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    line-height: 50px;
+}
+.bloc-commande{
+    display: flex;
+    align-items: center;
+}
+.sous-commande{
+    margin: auto;
+    
+   
+}
+.author{
+    color: red;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.bloc-quantity{
+    position: absolute;
+    right: 350px;
+    display: flex;
+    flex-direction: column;
+
+}
+.parent-quantity{
+   
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.delete-recette{
+    cursor: pointer;
+    color:orange;
+    font-size: 20px;
+}
+.parent-quantity span{
+    color:white;
+    font-size: 20px;
+}
+.quantitynumber{
+    color: red;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 30px;
+ 
+}
+.parent-article{
+    position: relative;
+    background: black;
+}
+.total-article{
+    
+    font-size: 30px;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    right: 0px;
+    position: absolute;
+}
+.total-article :nth-child(1){
+    
+    color: white;
+}
+.total-article :nth-child(2){
+    
+    color:orange;
+}

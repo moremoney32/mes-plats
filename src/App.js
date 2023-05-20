@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Header from './components/header/Header'
+import PanierRecettes from "./components/panier/PanierRecettes.jsx"
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import './index.css'
+import Home from './pages/Home';
+import Menu from './pages/Menu';
 
-function App() {
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+    <div className='app'> 
+    <Header/>
+    <Routes>
+        <Route path="/home" element={<Home/>} />
+        <Route path="/menu/:name" element={<Menu/>} />
+        <Route path="/menu/:name/panier" element={<PanierRecettes/>} />
+     </Routes>
     </div>
-  );
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
