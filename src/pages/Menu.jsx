@@ -1,16 +1,16 @@
 import React, { useState,useEffect} from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import { useLocation} from 'react-router-dom';
 import {slidersPictures} from "../components/slider/arraySider"
-//import {arrayBoisson} from "../components/slider/arraySider"
+import Input from '../components/input/Input';
+import { filterMenuColor } from '../components/filterColor/filterMenuColor';
+import { filterMenuColorBoisson } from '../components/filterColor/filterMenuColorBoisson';
+import {searchElementPlats,searchElementUserPlatVin} from '../modules/searchElement';
 import '../components/plats/plats.css' 
 import "../components/button/button.css"
 import "../components/main/main.css"
 import "../components/header/header.css"
 import "../components/input/input.css"
-
-import Input from '../components/input/Input';
-import {searchElementPlats,searchElementVin,searchElementUserPlatVin} from '../modules/searchElement';
 
 
 const Menu = () => {
@@ -37,7 +37,6 @@ const Menu = () => {
       return  inputPanier.style.display ="none",setEtat(false),setEtatBoisson(false)
       }
      
-    
    
    
         const filterMenu = (e)=>{
@@ -149,14 +148,12 @@ const Menu = () => {
         
         function getPanier(index){
             let specialTitle = document.querySelectorAll(".special-plats-title")
-            let specialTitless = document.querySelectorAll(".special-plats")
             for(let i =0;i<=specialTitle.length;i++){
                 return setTitle(specialTitle[index].textContent),setEtat(true)
             }  
         }
         function getPanierBoisson(index){
             let specialTitles = document.querySelectorAll(".special-plats-title-boisson") 
-            
             for(let i =0;i<=specialTitles.length;i++){
                 return setTitleBoisson(specialTitles[index].textContent),setEtatBoisson(true)
             }
@@ -164,90 +161,69 @@ const Menu = () => {
         }
 
        
-        async function selectRecettess(){
+        async function selectRecettesPlats(){
             let searchRecette = document.querySelector(".searchInput")
+           
             let timeOut = null
              clearTimeout(timeOut)
              timeOut = setTimeout(()=>{
 
                 searchRecette.addEventListener("input",(e)=>{
                     const searchInput = e.target.value
-                    if(searchInput.length>=3){
+                if(searchInput.length>=3){
+                   
                         
                          searchElementPlats(searchInput,slidersPictures).then((response)=>{
-                            console.log(response)
-                           return  setCurrentMenu(response)
-                             
+                            filterMenuColor(e)
+
+                           return  setCurrentMenu(response),setError(response) 
             })
            
-           
-            
-
                     }
                    
-                  
                     else{
-                      return  setCurrentMenu(arrayMenu)
+                        filterMenuColor(e)
+                       
 
-                    }
-                    
-                    
-                   
+                      return  setCurrentMenu(arrayMenu),setError(false)
+
+                    } 
                 })
-
-
              },[1000])
            
 
         }
-        async function selectRecettesss(){
+        async function selectRecettesPlatsVin(){
             let searchRecette = document.querySelector(".searchInput")
             let timeOut = null
              clearTimeout(timeOut)
              timeOut = setTimeout(()=>{
-
                 searchRecette.addEventListener("input",(e)=>{
                     const searchInput = e.target.value
                     if(searchInput.length>=3){
                         
                         searchElementUserPlatVin(searchInput,slidersPictures).then((response)=>{
-                            console.log(response)
-                           return setCurrentMenuBoisson(response)
-                          
-                          
-                             
+                            filterMenuColorBoisson(e)
+                        
+                           return setCurrentMenuBoisson(response),setErrorVin(response)               
             })
-           
-           
-            
-
                     }
                     
                     else{
-                        return  setCurrentMenuBoisson(arrayMenuBoisson)
+                        filterMenuColorBoisson(e)
+                        return  setCurrentMenuBoisson(arrayMenuBoisson),setErrorVin(false)
   
-                      }
-                      
-                   
-                  
-                   
-                    
-                    
-                   
+                      }  
                 })
-
-
              },[1000])
-           
-
         }
 
 
        
         useEffect(()=>{
-            //selectRecettes()
-            selectRecettess()
-            selectRecettesss()
+            
+            selectRecettesPlats()
+            selectRecettesPlatsVin()
            
            
 
@@ -255,6 +231,14 @@ const Menu = () => {
         function updateRecette(menu){
             const special = document.querySelector(".button")
              localStorage.setItem("objectPlat", JSON.stringify(menu))
+            
+        }
+        function closeGetPanier(){
+            setEtat(false)
+            
+        }
+        function closeGetPanierBoisson(){
+            setEtatBoisson(false)
             
         }
       
@@ -296,7 +280,7 @@ const Menu = () => {
                             </div>
                             
                 <div>
-                <p className='special-plats-title'>{menu.h2}</p>
+                    <p className='special-plats-title'>{menu.h2}</p>
                     <div className='tiltle-price'>
                         <span className='price'>price:<span className='euro'>{menu.price}€</span></span>
                         <div><i class="ri-shopping-cart-line" onClick={()=>getPanier(index)}></i></div>
@@ -314,7 +298,7 @@ const Menu = () => {
          
         
     </div>
-    {etat?<Input close={close} title={title}/>:""}
+    {etat?<Input close={close} title={title} closeGetPanier={closeGetPanier}/>:""}
     <div className='select-menu-accompagnements'>
         <h2>Mes accompagnements</h2>
         <div className='select-menu-accompagnements-all-button'>
@@ -331,12 +315,10 @@ const Menu = () => {
         
     </div>
     <div className='select-menu-accompagnements-trier'>
-    <div className='errorbiere'>nous  n avons pas encore cette biere</div>
+        <div className='errorbiere' style={errorVin.length === 0?{display:"block"}:{display:"none"}}>nous  n avons pas encore cette boisson</div>
     {
             currentMenuBoisson.map((menus,index)=>{
-                console.log(menus)
                 
-               
                 return(
                     <div className='special-plats' key={index} onClick={()=>updateRecette(menus)}>
                              <img src={require(`../images/${menus.image}`)} alt = ""/>
@@ -348,23 +330,23 @@ const Menu = () => {
                                 <i class="ri-star-fill"></i>
                             </div>
                             
-                <div>
-                <p className='special-plats-title-boisson'>{menus.h2}</p>
-                    <div className='tiltle-price'>
-                        <span className='price'>price:<span className='euro'>{menus.price}€</span></span>
-                        <div><i class="ri-shopping-cart-line" onClick={()=>getPanierBoisson(index)}></i></div>
-                    </div>
+                            <div>
+                                <p className='special-plats-title-boisson'>{menus.h2}</p>
+                                <div className='tiltle-price'>
+                                    <span className='price'>price:<span className='euro'>{menus.price}€</span></span>
+                                    <div><a href='#input' className='a'><i class="ri-shopping-cart-line" onClick={()=>getPanierBoisson(index)} ></i></a></div>
+                                </div>
                     
                     
-                </div>
+                            </div>
                
-    </div>
+                    </div>
                 )
             })
 
         }
         </div>
-        {etatBoisson?<Input close={close} title={titleBoisson}/>:""}
+        {etatBoisson?<Input close={close} title={titleBoisson} closeGetPanier={closeGetPanierBoisson}/>:""}
         <div className='parentPanier'>
         <NavLink to="/menu/:name/panier"><button className='panier'>panier</button></NavLink>
         </div>

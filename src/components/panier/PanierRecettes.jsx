@@ -7,13 +7,25 @@ import Formulaire from '../formulaire/Formulaire';
 
 
 function PanierRecettes() {
+    
     let arrayRecette =  JSON.parse(localStorage.getItem("produitRecettes"))
     let objectArticlesPrix = JSON.parse(localStorage.getItem("objectArticlesPrix"))
-    
-    
     const { register } = useForm();
     const [etatRecette,setEtatRecette]= useState(arrayRecette)
+    const [etat,setEtat]= useState(false)
+    const [etatObject,setEtatObject]= useState(objectArticlesPrix)
+   
     
+    function objectArticlesPrixNew(){
+        objectArticlesPrix = JSON.parse(localStorage.getItem("objectArticlesPrix"))
+    setEtatObject(objectArticlesPrix)
+
+    }
+    
+    
+   
+    
+    totalArticlesPrix(arrayRecette)
     function changesQuantity(){
         let inputValues = document.querySelectorAll(".quantitynumber")   
         
@@ -33,7 +45,8 @@ function PanierRecettes() {
                     arrayRecette[i].quantity = e.target.value
                        localStorage.setItem("produitRecettes", JSON.stringify(arrayRecette))
                        arrayRecette =  JSON.parse(localStorage.getItem("produitRecettes"))
-                       return setEtatRecette(arrayRecette), totalArticlesPrix(arrayRecette)        
+                       return  setEtatRecette(arrayRecette),totalArticlesPrix(arrayRecette),objectArticlesPrixNew()  
+                            
                             
                 }
             }
@@ -44,11 +57,19 @@ function PanierRecettes() {
 
        
     }
+    function closeForm(){
+        let connectFormulaire = document.querySelector(".parent-formulaire")
+        connectFormulaire.style.display = 'none'
+        setEtat(false)
+
+    }
     
     useEffect(()=>{
-       
+        
         changesQuantity()
-        totalArticlesPrix(etatRecette)
+        objectArticlesPrixNew()
+       
+       
     },[])
     
   return (
@@ -87,7 +108,7 @@ function PanierRecettes() {
                         <div className='bloc-quantity'>
                             <div className='parent-quantity'>
                                 <span>quantite:</span>
-                                <input  type ="number" className='quantitynumber' data-id={recette.id} defaultValue={recette.quantity} {...register(`quantity-${recette.id}`)}/>
+                                <input  type ="number" className='quantitynumber' data-id={recette.id} defaultValue={recette.quantity} {...register(`quantity-${recette.id}`)} min="1"/>
                             </div>
                             <span className='delete-recette'>supprimer</span>
                         </div>
@@ -98,7 +119,7 @@ function PanierRecettes() {
          }
          <div className='parent-article'>
             {
-                objectArticlesPrix.map((articlePrix,index)=>{
+                etatObject.map((articlePrix,index)=>{
                     return (
                         <div className='total-article' key={index}>
                         <span>Total Articles({articlePrix.totalQuantity}):</span>
@@ -111,9 +132,13 @@ function PanierRecettes() {
            
          </div>
          <div className='parent-valider'>
-            <button className='valider'>Valider</button>
+            <button className='valider' style={etat?{display:"none"}:{display:"block"}} onClick={()=>setEtat(true)}>Valider</button>
          </div>
-         <Formulaire/>
+         
+         {etat?<Formulaire closeForm={closeForm}/>:""}
+        
+         
+         
            
     </div>
     

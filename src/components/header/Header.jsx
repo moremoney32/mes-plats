@@ -21,7 +21,7 @@ const Header = () => {
             </ul>
         </nav>
         <div className='input-search'>
-            <input type="text" className='searchInput' placeholder='search  items...'/>
+            <input type="text" className='searchInput' placeholder='search  receipts...'/>
             <i class="ri-search-line"></i>
         </div>
         <div className='parent-ri-shopping'>

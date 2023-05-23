@@ -1,11 +1,12 @@
 import React from 'react'
 import "./input.css"
 
-const Input = ({close,title}) => {
+const Input = ({close,title,closeGetPanier}) => {
 
   function stockRecettes(){
    
     let input = document.querySelector(".quantity")
+    let inputPanier = document.querySelector(".input-panier")
     let objectRecettes = JSON.parse(localStorage.getItem("objectPlat"))
    
     let arrayRecettes = JSON.parse(localStorage.getItem("produitRecettes"))
@@ -20,7 +21,7 @@ const Input = ({close,title}) => {
         console.log(arrayRecettes)
   
         localStorage.setItem("produitRecettes", JSON.stringify(arrayRecettes))
-        return arrayRecettes = JSON.parse(localStorage.getItem("produitRecettes")),alert("plats envoye au panier")
+        return arrayRecettes = JSON.parse(localStorage.getItem("produitRecettes")),alert("plats envoye au panier"),closeGetPanier()
       }
       
       else if(arrayRecettes !== null){
@@ -33,7 +34,7 @@ const Input = ({close,title}) => {
             arrayRecettes[i].quantity += parseInt(input.value)
             localStorage.setItem("produitRecettes", JSON.stringify(arrayRecettes))
       
-            return arrayRecettes = JSON.parse(localStorage.getItem("produitRecettes")),alert("il ya deja ce produit dans le panier vous venez dajouter sa quantite")
+            return arrayRecettes = JSON.parse(localStorage.getItem("produitRecettes")),alert("il ya deja ce produit dans le panier vous venez dajouter sa quantite"),closeGetPanier()
           }
         }
         for(let i =0 ; i<arrayRecettes.length ;i++){
@@ -48,7 +49,7 @@ const Input = ({close,title}) => {
 
              localStorage.setItem("produitRecettes", JSON.stringify(arrayRecettes))
 
-             return arrayRecettes = JSON.parse(localStorage.getItem("produitRecettes")),alert("produit envoye au panier")
+             return arrayRecettes = JSON.parse(localStorage.getItem("produitRecettes")),alert("produit envoye au panier"),closeGetPanier()
 
 
           }
@@ -67,15 +68,23 @@ const Input = ({close,title}) => {
  
  
   return (
-    <div className='input-panier'>
+  
+    
+    <div className='input-panier' id='input'>
+      
       <i class="ri-close-circle-fill" onClick={close}></i>
         <div className='label-input'>
             <label htmlFor='itemQuantity'>Nombre de plats:</label>
-            <span className='title' onClick={stockRecettes}>{title}</span>
-            <input type="number" name="itemQuantity" min="0" max="100" className='quantity'/>          
+            <span className='title'>{title}</span>
+        
+            <input type="number" name="itemQuantity" min="0" max="100" className='quantity'/>  
+               
         </div>
-        <button>Ajouter</button>
+        <button className='button' onClick={stockRecettes}>Ajouter</button> 
+        
+        
     </div>
+    
   )
 }
 

@@ -2,8 +2,9 @@ export function totalArticlesPrix(arrayOftotal){
 
     let totalArticle = []
     let totalPrix = []
-    let totalArticlePrix = []
+   
     let objectArticlesPrix = JSON.parse(localStorage.getItem("objectArticlesPrix"))
+  
 
     arrayOftotal.forEach((article)=>{
 
@@ -25,9 +26,20 @@ export function totalArticlesPrix(arrayOftotal){
     "totalQuantity" :totalArticleJoin,
     "totalPrix":totalPrixJoin
   }
-  totalArticlePrix.push(objectQuantityPrice)
+  
+  if(objectArticlesPrix === null){
+
+    objectArticlesPrix = []
+    objectArticlesPrix.push(objectQuantityPrice)
+    return localStorage.setItem("objectArticlesPrix", JSON.stringify(objectArticlesPrix))
+
+  }
+  else if(objectArticlesPrix !== null){
+    localStorage.removeItem('objectArticlesPrix');
+    objectArticlesPrix = []
+    objectArticlesPrix.push(objectQuantityPrice)
+    return localStorage.setItem("objectArticlesPrix", JSON.stringify(objectArticlesPrix))
+
+  }
  
-  objectArticlesPrix = []
-  objectArticlesPrix.push(objectQuantityPrice)
-  return localStorage.setItem("objectArticlesPrix", JSON.stringify(objectArticlesPrix))
 }

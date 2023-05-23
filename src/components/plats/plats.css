@@ -132,7 +132,7 @@
 }
 .errorbiere{
     font-size: 40px;
-    color:orange;
+    color:white;
     position: absolute;
     left: 30%;
     display: none;
@@ -157,5 +157,8 @@
     color: red;
     cursor: pointer;
     
+}
+.a{
+    color: inherit;
 }
 

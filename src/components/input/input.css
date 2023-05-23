@@ -1,17 +1,19 @@
 .input-panier{
     background:orange;
     display: flex;
-    gap: 10px;
     flex-direction: column;
     width: 230px;
-    height: 100px;
+    height: 120px;
     padding: 10px;
-    margin: auto;
+    gap: 30px;
     border-radius: 15px;
     transform: translate3d(0,50px,0);
     position: relative;
+    text-align: center;
+    margin: auto;
 }
-.input-panier i{
+
+.ri-close-circle-fill{
     position: absolute;
     right: 5px;
     font-size: 25px;
@@ -45,7 +47,7 @@
    
     color:red;
 }
-.input-panier button{
+ .button{
     padding-top: 7px;
     padding-bottom: 7px;
     padding-left: 13px;
@@ -54,11 +56,16 @@
     font-size: 20px;
     color: red;
     width: 40%;
-    margin: auto;
     cursor: pointer;
-    border: none;
-    outline: none;
-    transform: translate3d(0,13px,0);
-    
-    
+   border: none;
+   outline: none;
+    transition: 0.5s;
+    margin: auto;
+   
+   
+       
+}
+.button:hover{
+    background: black;
+    color: white;
 }
