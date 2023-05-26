@@ -1,4 +1,4 @@
-export function totalArticlesPrix(arrayOftotal){
+export   function totalArticlesPrix(arrayOftotal){
 
     let totalArticle = []
     let totalPrix = []

@@ -7,6 +7,8 @@
     padding-top: 70px;
     padding-bottom: 70px;
 }
+
+
 .commande h2{
     color: orange;
     position: absolute;
@@ -20,8 +22,6 @@
 }
 .sous-commande{
     margin: auto;
-    
-   
 }
 .author{
     color: red;

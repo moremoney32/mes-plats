@@ -15,8 +15,8 @@ function PanierRecettes() {
     const [etat,setEtat]= useState(false)
     const [etatObject,setEtatObject]= useState(objectArticlesPrix)
    
-    
-    function objectArticlesPrixNew(){
+    totalArticlesPrix(arrayRecette)
+    async function objectArticlesPrixNew(){
         objectArticlesPrix = JSON.parse(localStorage.getItem("objectArticlesPrix"))
     setEtatObject(objectArticlesPrix)
 
@@ -25,8 +25,8 @@ function PanierRecettes() {
     
    
     
-    totalArticlesPrix(arrayRecette)
-    function changesQuantity(){
+   
+   async function changesQuantity(arrayRecette){
         let inputValues = document.querySelectorAll(".quantitynumber")   
         
         inputValues.forEach((inputValue)=>{
@@ -45,9 +45,7 @@ function PanierRecettes() {
                     arrayRecette[i].quantity = e.target.value
                        localStorage.setItem("produitRecettes", JSON.stringify(arrayRecette))
                        arrayRecette =  JSON.parse(localStorage.getItem("produitRecettes"))
-                       return  setEtatRecette(arrayRecette),totalArticlesPrix(arrayRecette),objectArticlesPrixNew()  
-                            
-                            
+                       return totalArticlesPrix(arrayRecette),objectArticlesPrixNew()            
                 }
             }
             })
@@ -63,16 +61,41 @@ function PanierRecettes() {
         setEtat(false)
 
     }
+     async function removeProduit(){
+        let removeArrayRecette =  JSON.parse(localStorage.getItem("produitRecettes"))
+        let specialPlats = document.querySelectorAll(".bloc-commande")
+        specialPlats.forEach((elementRecette)=>{    
+            elementRecette.addEventListener('click',(e)=>{
+                if(e.target !== e.currentTarget){
+                            let targetClass = e.target.className;
+                            let index = removeArrayRecette.findIndex(obj =>obj.id === elementRecette.dataset.id)
+                                if(targetClass == "delete-recette"){
+                                    return  elementRecette.remove(),
+                                
+                                    removeArrayRecette.splice(index,1),removeArrayRecette,
+                                    localStorage.setItem("produitRecettes", JSON.stringify(removeArrayRecette)),removeArrayRecette =  JSON.parse(localStorage.getItem("produitRecettes"))
+                                    ,totalArticlesPrix(removeArrayRecette),objectArticlesPrixNew(), changesQuantity(removeArrayRecette)
+                                }
+                            
+                }
+            })
+           
+        })
+
+    }
     
     useEffect(()=>{
         
-        changesQuantity()
+        
+        
+        removeProduit()
         objectArticlesPrixNew()
+        changesQuantity(arrayRecette)
        
        
     },[])
     
-  return (
+  return ( 
    
     <div className='commande'>
         <h2>LE RESTAURANT  <span className='author'>TFL</span> ET <span className='author'>KMC</span> ESPERE QUE VOTRE COMMANDE A ETE EFFECTIVE TOUTE FOIS VOUS POUVEZ MODIFIER LES QUANTITES A VOTRE GUISE AVANT LA VALIDATION FINALE.</h2>
@@ -81,7 +104,7 @@ function PanierRecettes() {
 
                 return (
                     
-                    <div className='bloc-commande' key={index}>
+                    <div className='bloc-commande'  key={index} data-id={recette.id}>
                         <div className='special-plats sous-commande'>
                             <img src={require(`../../images/${recette.image}`)} alt = "" className='img'/>
                             
@@ -119,7 +142,7 @@ function PanierRecettes() {
          }
          <div className='parent-article'>
             {
-                etatObject.map((articlePrix,index)=>{
+                etatObject?.map((articlePrix,index)=>{
                     return (
                         <div className='total-article' key={index}>
                         <span>Total Articles({articlePrix.totalQuantity}):</span>
