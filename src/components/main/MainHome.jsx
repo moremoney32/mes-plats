@@ -7,7 +7,7 @@ import pizza1 from "../../images/pizza1.jpg"
 import avocat1 from "../../images/avocat1.jpg"
 import "./main.css"
 
-const Main = () => {
+const MainHome = () => {
   return (
     <div className='main'>
         <h2>Popular Food Menu</h2>
@@ -28,4 +28,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default MainHome

@@ -1,7 +1,7 @@
 import React from 'react'
 import cuisine from '../../images/cuisine.jpg'
 import "./section.css"
-import Button from '../../components/button/Button'
+import Button from '../button/Button'
 
 const Section = () => {
   return (
