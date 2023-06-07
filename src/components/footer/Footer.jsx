@@ -8,7 +8,7 @@ const Footer = () => {
             <i class="ri-restaurant-2-line"></i>
             <h2>Chef Food</h2>
         </div>
-        <div className='footer-main'>
+        <div id='footer-main'>
             <div className='footer-main-bloc'>
                 <span className='footer-main-bloc1'>Numero-fix:<span className='footer-main-span'>00338729876189</span></span>
                 <span className='footer-main-bloc1'>Mobile:<span className='footer-main-span'>693332788</span></span>

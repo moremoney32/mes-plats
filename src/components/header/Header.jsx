@@ -15,9 +15,9 @@ const Header = () => {
             <ul>
             <NavLink to="/home" className={window.location.pathname === "/home"? "nav-link-actu" : "nav-link-home"}><li>Home</li></NavLink>
             <NavLink  className="nav-link-home"><li>About</li></NavLink>
-            <NavLink  to="/menu" className={window.location.pathname==="/menu"? "nav-link-actu" : "nav-link-home"}><li>Menu</li></NavLink>
+            <NavLink  to="/menu/:name" className={window.location.pathname==="/menu/:name"? "nav-link-actu" : "nav-link-home"}><li>Menu</li></NavLink>
             <NavLink className="nav-link-home"><li>Recipes</li></NavLink>
-            <NavLink className="nav-link-home"><li>Contact</li></NavLink>
+            <NavLink  className="nav-link-home"><li>Contact</li></NavLink>
             </ul>
         </nav>
         <div className='input-search'>

@@ -20,7 +20,7 @@
     font-size: 33px;
     font-weight: 600;
 }
-.footer-main{
+#footer-main{
     display: flex;
     justify-content: space-between;
 }

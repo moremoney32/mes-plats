@@ -98,7 +98,7 @@ function PanierRecettes() {
   return ( 
    
     <div className='commande'>
-        <h2>LE RESTAURANT  <span className='author'>TFL</span> ET <span className='author'>KMC</span> ESPERE QUE VOTRE COMMANDE A ETE EFFECTIVE TOUTE FOIS VOUS POUVEZ MODIFIER LES QUANTITES A VOTRE GUISE AVANT LA VALIDATION FINALE.</h2>
+        <h2>LE RESTAURANT  <span className='author'>CASA</span> DEL <span className='author'>FRANCO</span> ESPERE QUE VOTRE COMMANDE A ETE EFFECTIVE TOUTE FOIS VOUS POUVEZ MODIFIER LES QUANTITES A VOTRE GUISE AVANT LA VALIDATION FINALE.</h2>
          {
             etatRecette.map((recette,index)=>{
 

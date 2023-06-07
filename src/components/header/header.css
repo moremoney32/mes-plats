@@ -86,3 +86,8 @@
     top: 6px;
     font-weight: 500;
   }
+
+  /*responsive header*/
+
+  @media(max-width:767px){
+  }

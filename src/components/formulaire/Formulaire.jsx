@@ -2,16 +2,35 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import "./formulaire.css"
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Formulaire = ({closeForm}) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const onSubmit = (data) => {
         if(data){
-      return alert("votre commande a ete envoye  vous recevrez un mail pur votre ticket merci de votre fidelite"),closeForm(),navigate("/home")
+           
+    let arrayRecette =  JSON.parse(localStorage.getItem("produitRecettes"))
+    let objectArticlesPrix = JSON.parse(localStorage.getItem("objectArticlesPrix"))
+          console.log(data)
+      return alert("votre commande a ete envoye  vous recevrez un mail pour votre ticket merci de votre fidelite"),closeForm(),navigate("/home"),
+      axios.post('https://tflkmc.ubix-group.com/public/index.php/api/form', {
+        "email":data.email,
+        "username":data.username,
+        "ville":data.ville,
+        "produitRecettes":arrayRecette,
+        "objetArticlesPrix":objectArticlesPrix
+      })
+      .then(function (response) {
+        return response
+      })
+      .catch(function (error) {
+        alert('echec connexion')
+      });
          
         }
       };
+      
     
   
     

@@ -15,7 +15,7 @@ const Section = () => {
 
                     Notre chef talentueux a créé un menu inspiré par les saveurs locales et internationales, en utilisant des techniques de cuisine innovantes pour offrir une expérience culinaire unique.
                 </p>
-                <Button text='Reservation'/>
+                <Button text='BOISSON'/>
 
 
           </div>
