@@ -7,8 +7,6 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 
 
-
-
 const App = () => {
   return (
     <BrowserRouter>
