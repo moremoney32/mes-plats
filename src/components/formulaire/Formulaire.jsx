@@ -78,6 +78,7 @@ const Formulaire = ({closeForm}) => {
           <button type="submit" className='send-command'>Envoyer</button>
         </form>
     </div>
+  
   );
     
   
