@@ -13,7 +13,9 @@ const Formulaire = ({closeForm}) => {
     let arrayRecette =  JSON.parse(localStorage.getItem("produitRecettes"))
     let objectArticlesPrix = JSON.parse(localStorage.getItem("objectArticlesPrix"))
           
-      return alert("votre commande a ete envoye  vous recevrez un mail pour votre ticket merci de votre fidelite"),closeForm(),navigate("/home"),
+    alert("votre commande a ete envoye  vous recevrez un mail pour votre ticket merci de votre fidelite")
+      closeForm()
+      navigate("/home")
       axios.post('https://tflkmc.ubix-group.com/public/index.php/api/form', {
         "email":data.email,
         "username":data.username,

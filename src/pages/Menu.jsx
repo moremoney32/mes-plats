@@ -1,5 +1,5 @@
 import React, { useState,useEffect} from 'react'
-import { NavLink,Link } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { useLocation} from 'react-router-dom';
 import {slidersPictures} from "../components/slider/arraySider"
 import Input from '../components/input/Input';
