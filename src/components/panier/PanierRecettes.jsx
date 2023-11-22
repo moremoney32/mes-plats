@@ -15,9 +15,6 @@ function PanierRecettes() {
     const [etatObject,setEtatObject]= useState(null)
    
 
-    
-    let isMounted = useRef(true);
-
     useEffect(() => {
         const arrayRecette = JSON.parse(localStorage.getItem("produitRecettes"));
 
@@ -25,22 +22,12 @@ function PanierRecettes() {
             setEtatRecette(arrayRecette);
 
             totalArticlesPrix(arrayRecette).then((response) => {
-                if (isMounted.current) {
                     setEtatObject(response);
                     console.log(response)
-                }
             });
         }
 
-        return () => {
-            isMounted.current = false;
-        };
     }, []);
-    useEffect(() => {
-        console.log("Etat actuel d'etatObject :", etatObject);
-    }, [etatObject]);
-    
-   
 
 
    
@@ -56,19 +43,18 @@ function PanierRecettes() {
                     
                         localStorage.setItem("produitRecettes", JSON.stringify(arrayRecette)) 
                         arrayRecette =  JSON.parse(localStorage.getItem("produitRecettes"))
-                       totalArticlesPrix(arrayRecette).then((totalArticlesPrice)=>{
-                        console.log(totalArticlesPrice)
-                        if (isMounted.current) {
+                     return  totalArticlesPrix(arrayRecette).then((totalArticlesPrice)=>{
                             console.log(totalArticlesPrice);
-                             setEtatObject(totalArticlesPrice);
-                        }
+                            setEtatObject(totalArticlesPrice)
                         
                        })
+                       
                         
                                         
                         }
            }  
     }
+   
  
     
     
@@ -94,7 +80,7 @@ function PanierRecettes() {
             localStorage.setItem("produitRecettes", JSON.stringify(arrayRecette))
             arrayRecette =  JSON.parse(localStorage.getItem("produitRecettes"))
             setEtatRecette(arrayRecette)
-            totalArticlesPrix(arrayRecette).then((totalArticlesPrice)=>{
+          return  totalArticlesPrix(arrayRecette).then((totalArticlesPrice)=>{
                 console.log(totalArticlesPrice)
                 setEtatObject(totalArticlesPrice)
                })
@@ -140,7 +126,7 @@ function PanierRecettes() {
                         <div className='bloc-quantity'>
                             <div className='parent-quantity'>
                                 <span>quantite:</span>
-                                <input  type ="number" ref={isMounted} className='quantitynumber' data-id={recette.id} defaultValue={recette.quantity} {...register(`quantity-${recette.id}`)} min="1" onChange={changesQuantity}/>
+                                <input  type ="number" className='quantitynumber' data-id={recette.id} defaultValue={recette.quantity} {...register(`quantity-${recette.id}`)} min="1" onChange={changesQuantity}/>
                             </div>
                             <span className='delete-recette'data-id={recette.id} onClick={removeProduit}>supprimer</span>
                         </div>
